@@ -30,10 +30,6 @@ func (o Image) Errors() Errors {
 		errors["createdAt"] = "is required"
 	}
 
-	if o.CreatedBy == "" {
-		errors["createdBy"] = "is required"
-	}
-
 	if o.Size == 0 {
 		errors["size"] = "is required"
 	} else if o.Size < 0 {
