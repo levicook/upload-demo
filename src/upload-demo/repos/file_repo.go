@@ -1,7 +1,7 @@
 package repos
 
 import (
-	"foxsays/models"
+	"upload-demo/models"
 
 	"labix.org/v2/mgo"
 )

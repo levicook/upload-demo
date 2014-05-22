@@ -1,8 +1,8 @@
 package repos
 
 import (
-	"foxsays/log"
 	"testing"
+	"upload-demo/log"
 
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
@@ -21,7 +21,7 @@ func setupTestDB() {
 	s, err := mgo.Dial("127.0.0.1")
 	log.PanicIf(err)
 
-	db := s.DB("foxsays-test")
+	db := s.DB("upload-demo-test")
 	log.PanicIf(db.DropDatabase())
 
 	testDB = db

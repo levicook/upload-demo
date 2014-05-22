@@ -2,7 +2,7 @@ package repos
 
 import (
 	"time"
-	"foxsays/models"
+	"upload-demo/models"
 
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
