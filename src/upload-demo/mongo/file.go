@@ -1,4 +1,4 @@
-package repos
+package mongo
 
 import (
 	"time"

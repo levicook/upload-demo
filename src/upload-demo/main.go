@@ -2,20 +2,32 @@ package main
 
 import (
 	"net/http"
+	"upload-demo/config"
 	"upload-demo/httpd"
 	"upload-demo/log"
+	"upload-demo/mongo"
+
+	"labix.org/v2/mgo"
 )
 
-func init() {
-
-}
+var (
+	mongoAddr = "127.0.0.1"
+	mongoDB   = "upload-demo"
+	httpdAddr = "127.0.0.1:9000"
+)
 
 func main() {
-	var (
-		addr   = "127.0.0.1:9000"
-		router = httpd.Routes.Router()
+	s, err := mgo.Dial(mongoAddr)
+	log.PanicIf(err)
+	defer s.Close()
+
+	db := s.DB(mongoDB)
+	config.Init(
+		mongo.NewFileRepo(db),
+		mongo.NewImageRepo(db),
 	)
 
-	log.Printf("listening at http://%v", addr)
-	log.PanicIf(http.ListenAndServe(addr, router))
+	router := httpd.Routes.Router()
+	log.Printf("listening at http://%v", httpdAddr)
+	log.PanicIf(http.ListenAndServe(httpdAddr, router))
 }

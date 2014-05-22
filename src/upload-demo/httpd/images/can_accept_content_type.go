@@ -8,11 +8,14 @@ import (
 )
 
 func canAcceptContentType(r *http.Request) (statusCode int, statusText string) {
-	ct := r.Header.Get("Content-Type")
+	var (
+		contentType = r.Header.Get("Content-Type")
+		acceptable  = strings.HasPrefix(contentType, "multipart/form-data;")
+	)
 
-	if !strings.HasPrefix(ct, "multipart/form-data;") {
+	if !acceptable {
 		statusCode = status.UnsupportedMediaType
-		statusText = fmt.Sprintf("Unsupported Media Type: %q", ct)
+		statusText = fmt.Sprintf("Unsupported Media Type: %q", contentType)
 	}
 
 	return

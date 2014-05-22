@@ -1,19 +1,10 @@
-package repos
+package mongo
 
 import (
-	"testing"
 	"upload-demo/log"
 
 	"labix.org/v2/mgo"
-	"labix.org/v2/mgo/bson"
 )
-
-func Test_safeOid(t *testing.T) {
-	oid := safeOid("")
-	if oid != bson.ObjectIdHex("000000000000000000000000") {
-		t.Fatalf("bad oid: %q", oid)
-	}
-}
 
 var testDB *mgo.Database
 
