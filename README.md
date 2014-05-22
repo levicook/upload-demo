@@ -7,8 +7,8 @@ This app demonstrates patterns we've found useful and trustworthy. YMMV.
 
 ##### Routing:
 
-Method   | URL | Name
--------- | --- | ----
+Method   | URL                        | Name           |
+-------- | ---                        | ----           |
 POST     | /images                    | create_image   |
 GET      | /images/{imageId}          | show_image     |
 GET      | /images/{imageId}/download | download_image |
