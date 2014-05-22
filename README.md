@@ -15,14 +15,14 @@ GET      | /images/{imageId}/download | download_image |
 GET      | /images/{imageId}/metadata | image_metadata |
 
 
-##### Validation:
+##### Topics:
 
-Authorization: Does this client have permission to create an image?
+Authorization
+* Does this client have permission to create an image?
 
-Content Type: Is this an image format we'll accept?
-MIME Type Detection and validation
+Validation
+* Is this an image format we accept?
+* Is this upload too large?
 
-Content Length: Is this upload too large?
-        Optimist: checking the Content-Length header
-        Pessimist: Content-Length header was a lie! Limiting what we're willing to read.
-        
+Efficiency
+* Stream all the things!
