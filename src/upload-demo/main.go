@@ -2,12 +2,20 @@ package main
 
 import (
 	"net/http"
+	"upload-demo/httpd"
 	"upload-demo/log"
 )
 
-func main() {
+func init() {
 
-	httpAddr := "127.0.0.1:9000"
-	log.Printf("listening at http://%v", httpAddr)
-	log.PanicIf(http.ListenAndServe(httpAddr, routes.Router()))
+}
+
+func main() {
+	var (
+		addr   = "127.0.0.1:9000"
+		router = httpd.Routes.Router()
+	)
+
+	log.Printf("listening at http://%v", addr)
+	log.PanicIf(http.ListenAndServe(addr, router))
 }

@@ -1,10 +1,10 @@
-package main
+package route
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"time"
+	"upload-demo/log"
 
 	"github.com/gorilla/mux"
 )
