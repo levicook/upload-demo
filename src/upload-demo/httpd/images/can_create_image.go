@@ -6,7 +6,8 @@ import (
 )
 
 func canCreateImage(r *http.Request) (statusCode int, statusText string) {
-	var acceptable = len(r.Header.Get("X-I-HAVE-THE-SECRET")) > 0
+	println(r.Header.Get("X-SECRET"))
+	var acceptable = r.Header.Get("X-SECRET") == "sekret"
 
 	if !acceptable {
 		statusCode = status.Unauthorized
